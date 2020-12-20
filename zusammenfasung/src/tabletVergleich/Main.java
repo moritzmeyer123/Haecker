@@ -4,20 +4,23 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 
+import exceptions.BeratungsException;
+import exceptions.Kunde;
+
 public class Main {
 
 	public static void main (String[] args) {
 		Tablet[] tablets = erzeugeTestDaten();
 		ArrayList<Tablet> tabletList = new ArrayList<>();
 		tabletList = castArrayToList(tablets);
-		gibTabletListeAus(tabletList);
-		System.out.println();
-		tabletList.sort(new MediaMarktBerater());
-		gibTabletListeAus(tabletList);
-		System.out.println();
-		Collections.sort(tabletList);
-		gibTabletListeAus(tabletList);
-		//System.out.println(tablets[0].compareTo(tablets[1]));
+		Kunde kunde = new Kunde(800, false);
+		try {
+			kunde.beratenLassen(tabletList);
+		} catch (BeratungsException e){
+			e.printStackTrace();
+		}
+		
+	
 	}
 	
 	public static Tablet[] erzeugeTestDaten () {
