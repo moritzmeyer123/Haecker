@@ -21,6 +21,7 @@ public class Main {
 		
 		
 	}
+
 	
 	public static void writeBytes() {
 		try (FileOutputStream fos = new FileOutputStream("test.txt", true)){
