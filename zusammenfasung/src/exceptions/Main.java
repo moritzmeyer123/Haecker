@@ -10,17 +10,14 @@ public class Main {
 
 	public static void testeArrayException(int size) {
 		int[] arr = new int[size];
-		//for (int i = 0; i < 10; i++) {
-			try {
-				System.out.println(arr[size + 2]);
-			} catch (IndexOutOfBoundsException e) {
-				int[] temp = new int[8];
-				temp[size + 2] = 3;
-				arr = temp;
-			} finally {
-				System.out.println("ENDE");
-			}
-		//}
+		try {
+			System.out.println(arr[size + 2]);
+		} catch (IndexOutOfBoundsException e) {
+			int[] temp = new int[8];
+			temp[size + 2] = 3;
+			arr = temp;
+		}
+
 	}
 
 	public static void testeArrayExcpetionWOTry(int size) {
@@ -28,7 +25,7 @@ public class Main {
 		System.out.println(arr[size + 1]);
 	}
 
-	public static void testeNullPointerException(int[] arr) throws FileNotFoundException{
+	public static void testeNullPointerException(int[] arr) throws FileNotFoundException {
 		System.out.println(arr[1]);
 	}
 
