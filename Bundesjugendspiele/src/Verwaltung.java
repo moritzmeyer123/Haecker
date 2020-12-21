@@ -111,4 +111,8 @@ public class Verwaltung {
 			System.out.println(t.toString());
 		}
 	}
+	
+	public ArrayList<Teilnehmer> getTeilnehmerList(){
+		return teilnehmerListe;
+	}
 }
