@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 
 public class Main {
 
@@ -35,6 +36,30 @@ public class Main {
 			ex.printStackTrace();
 		} catch (Exception ex) {
 			ex.printStackTrace();
+		}
+	}
+	
+	public static void writeBytesfinally() {
+		FileOutputStream fos = null;
+		try {
+			fos = new FileOutputStream("test.txt", true);
+			String text = "@ÖÄÜ?ß";
+			//String text = "hallo";
+			char[] c = text.toCharArray();
+			for(char b: c) {
+				fos.write((int)b);
+			}
+		} catch (FileNotFoundException ex) {
+			ex.printStackTrace();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			try {
+				fos.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 	
