@@ -1,4 +1,4 @@
-
+package de.dhbw.rh.jfc;
 import java.util.Date;
 
 public class Person implements Comparable<Person>{
@@ -28,11 +28,11 @@ public class Person implements Comparable<Person>{
     @Override
     public int compareTo(Person o) {
         // TODO Auto-generated method stub
-        if (nachname.compareTo(o.getNachname()) != 0){
+        if (nachname.compareToIgnoreCase(o.getNachname()) != 0){
             return nachname.compareTo(o.getNachname());
         }
         if (vorname.compareTo(o.getVorname()) != 0){
-            return vorname.compareTo(o.getVorname());
+            return vorname.compareToIgnoreCase(o.getVorname());
         }
         return date.compareTo(o.getDate());
     }

@@ -1,4 +1,5 @@
-import java.time.MonthDay;
+package de.dhbw.rh.jfc;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -49,7 +50,8 @@ public class Geburtstagskalender {
     
     }
 
-    public Collection<Person> jubilare (int monat, int tag){
+    @SuppressWarnings("deprecation")
+	public Collection<Person> jubilare (int monat, int tag){
         ArrayList<Person> jubilare = new ArrayList<Person>();
         
         for (Person p: persons){
@@ -60,7 +62,8 @@ public class Geburtstagskalender {
         return jubilare;
     }
 
-    public static void main(String[] args) {
+    @SuppressWarnings("deprecation")
+	public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Geburtstagskalender kalender = new Geburtstagskalender();
 		System.out.println("Eingabe: ");
@@ -72,9 +75,10 @@ public class Geburtstagskalender {
                 String nachname = scanner.nextLine();
                 System.out.println("Vorname: ");
                 String vorname = scanner.nextLine();
-                System.out.println("Datum [YEAR.MONTH:DATE] ");
-                String[] dateString = scanner.nextLine().split(".");
-                Date date = new Date(Integer.parseInt(dateString[0]), Integer.parseInt(dateString[1]), Integer.parseInt(dateString[2]));
+                System.out.println("Datum [YEAR:MONTH:DATE] ");
+                String dateIn = scanner.nextLine();
+                String[] dateString = dateIn.split(":");
+                Date date = new Date(Integer.parseInt(dateString[0]), Integer.parseInt(dateString[1])-1, Integer.parseInt(dateString[2]));
 				kalender.fuegeHinzu(new Person(nachname, vorname, date));
 			} else if (in.equals("DEL")) {
 				System.out.println("Nachname: ");
@@ -82,7 +86,8 @@ public class Geburtstagskalender {
                 System.out.println("Vorname: ");
                 String vorname = scanner.nextLine();
                 System.out.println("Datum [YEAR.MONTH:DATE] ");
-                String[] dateString = scanner.nextLine().split(".");
+                String dateIn = scanner.nextLine();
+                String[] dateString = dateIn.split(".");
                 Date date = new Date(Integer.parseInt(dateString[0]), Integer.parseInt(dateString[1]), Integer.parseInt(dateString[2]));
 				kalender.entferne(new Person(nachname, vorname, date));
 			} else if (in.equals("PRINT")) {
@@ -104,7 +109,6 @@ public class Geburtstagskalender {
 				System.out.println("Gültige Eingaben sind: ADD ; DEL ; PRINT; NXT; JUB; ENDE");
 			}
             System.out.println("Eingabe: ");
-            in = scanner.nextLine();
 		}
 
         scanner.close();
